@@ -47,13 +47,13 @@ CORS_HEADERS = {
 # 模型列表：原样使用 Cline /v1/models 返回的完整模型 ID。
 # 不人为添加 cline/ 前缀；Telegram 会完整显示这些 ID，避免不同供应商模型名被截断后混淆。
 FALLBACK_MODELS = [
-    {"id": "cline-free/deepseek-v4.1-flash", "upstream": "cline-free/deepseek-v4.1-flash", "provider": "cline", "cost": "free"},
+    {"id": "cline-free/nemotron-3.5-super-vl", "upstream": "cline-free/nemotron-3.5-super-vl", "provider": "nvidia", "cost": "free"},
+    {"id": "z-ai/glm-5.3-flash", "upstream": "z-ai/glm-5.3-flash", "provider": "zai", "cost": "free"},
     {"id": "deepseek/deepseek-v4-flash", "upstream": "deepseek/deepseek-v4-flash", "provider": "deepseek", "cost": "free"},
     {"id": "poolside/laguna-s-2.1:free", "upstream": "poolside/laguna-s-2.1:free", "provider": "poolside", "cost": "free"},
     {"id": "cline-pass/glm-5.2", "upstream": "cline-pass/glm-5.2", "provider": "zai", "cost": "pass"},
     {"id": "cline-pass/deepseek-v4-flash", "upstream": "cline-pass/deepseek-v4-flash", "provider": "deepseek", "cost": "pass"},
     {"id": "cline-pass/qwen3.7-max", "upstream": "cline-pass/qwen3.7-max", "provider": "qwen", "cost": "pass"},
-    {"id": "zai/glm-5.3-flash", "upstream": "zai/glm-5.3-flash", "provider": "zai", "cost": "free"},
 ]
 
 # Cline 官方免费模型白名单（2026-08-29，来自插件 recommended-models 接口）
@@ -65,13 +65,13 @@ FREE_WHITELIST = [
     "xiaomi/mimo-v2.5",
     "minimax/minimax-m3",
     "poolside/laguna-s-2.1",
-    "cline-free/deepseek-v4.1-flash",
     "cline-free/muse-spark-1.3-contributor",
     "cline-free/solar-pro4",
 ]
 
-# 默认模型：Cline 免费 DeepSeek V4.1 Flash 通道（cline-free/ 官方免费额度，无需 credits）
-DEFAULT_MODEL = "cline-free/deepseek-v4.1-flash"
+# 默认模型：cline-free/nemotron-3.5-super-vl（cline-free 官方免费额度，无需 credits）。
+# 原 cline-free/deepseek-v4.1-flash 已被上游下线（404 model not found），勿再设为默认。
+DEFAULT_MODEL = "cline-free/nemotron-3.5-super-vl"
 
 MODELS_TTL = 10 * 60  # 10 分钟
 
