@@ -29,6 +29,15 @@ import time
 import urllib.parse
 import urllib.request
 
+# Windows consoles often default to a legacy code page (cp1252, gbk, ...) that
+# cannot encode this script's emoji/CJK output — it crashes before printing
+# anything. Reconfigure both streams to UTF-8 (unencodable chars -> "?").
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError, OSError):
+        pass
+
 WORKOS_DEVICE = "https://api.workos.com/user_management/authorize/device"
 WORKOS_AUTH = "https://api.workos.com/user_management/authenticate"
 CLINE_REGISTER = "https://api.cline.bot/api/v1/auth/register"
